@@ -1,0 +1,52 @@
+#urls.py
+from django.urls import path     
+from . import views
+urlpatterns = [
+    path('', views.index),	   
+]
+
+#views.py
+from django.shortcuts import render
+from time import gmtime, strftime
+    
+def index(request):
+    context = {
+        "time": strftime("%b-%d-%Y %I:%M %p", gmtime())
+    }
+    return render(request,'index.html', context)
+    
+ #style.css
+ h1 {
+    color: lime;
+    font-family: fantasy;
+    text-align: center;
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+}
+
+p {
+   text-align: center;
+    border: 2px solid black;
+    font-size: 80px;
+    width: 63%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+#index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <!-- <img src="{% static 'images/image.jpg' %}" /> -->
+    <h1>The current time and date:</h1>
+    <p>{{time}}</p>
+</body>
+</html>
