@@ -24,7 +24,7 @@
     <h2 class ="header">Random Word (attempt # {{request.session.counter}})</h2>
     <h1 class="num">{{rand}}</h1>
     <a class="btn" href="/">Generate</a>
-    <a class="reset" href="/" value="RESET">RESET</a>
+    <a class="btn" href="/reset">RESET</a>
     <style>
         
         h2.header {
