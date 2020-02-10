@@ -10,9 +10,16 @@ def index(request):
     request.session["counter"] += 1
     return render(request, "index.html", context)
     
+
+def reset(request):
+    request.session.clear()
+    return redirect("/")
+    
+ # these are the urls.py
     from django.urls import path
 from . import views
                     
 urlpatterns = [
-    path('', views.index)
+    path('', views.index),
+    path("reset", views.reset)
 ]
